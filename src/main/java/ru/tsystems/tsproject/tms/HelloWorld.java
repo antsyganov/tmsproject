@@ -1,7 +1,5 @@
 package ru.tsystems.tsproject.tms;
 
-import ru.tsystems.tsproject.tms.entity.Driver;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 

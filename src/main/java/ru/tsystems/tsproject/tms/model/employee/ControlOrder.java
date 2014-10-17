@@ -1,7 +1,7 @@
-package ru.tsystems.tsproject.tms.employee;
+package ru.tsystems.tsproject.tms.model.employee;
 
 
-import ru.tsystems.tsproject.tms.entity.Order;
+import ru.tsystems.tsproject.tms.model.entity.Order;
 
 /**
  * Created by Lena on 05.10.2014.

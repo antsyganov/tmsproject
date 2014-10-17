@@ -1,10 +1,8 @@
-package ru.tsystems.tsproject.tms.entity;
+package ru.tsystems.tsproject.tms.model.entity;
 /**
  * Created by Lena on 04.10.2014.
  */
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="wagon")
@@ -26,7 +24,9 @@ public class Wagon {
     @JoinColumn(name = "order")
     private Order order;
 
-    private ArrayList listOfDrivers;
+    @OneToMany
+    @JoinColumn(name = "driver")
+    private Driver drivers;
 
     public Wagon(){
 
@@ -47,8 +47,8 @@ public class Wagon {
     public void setOrderNumber(Order orderNumber){
         this.order = orderNumber;
     }
-    public void setListOfDrivers(ArrayList list){
-        listOfDrivers = list;
+    public void setListOfDrivers(Driver drivers){
+        this.drivers = drivers;
     }
 
     public long getId(){
@@ -66,7 +66,7 @@ public class Wagon {
     public Order getOrderNumber(){
         return order;
     }
-    public ArrayList getListOfDrivers(){
-        return listOfDrivers;
+    public Driver getListOfDrivers(){
+        return drivers;
     }
 }

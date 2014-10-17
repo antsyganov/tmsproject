@@ -1,4 +1,4 @@
-package ru.tsystems.tsproject.tms.entity;
+package ru.tsystems.tsproject.tms.model.entity;
 import javax.persistence.*;
 
 /**
@@ -63,7 +63,7 @@ public class Driver {
     public String getFirstName(){
         return firstName;
     }
-    public String getLastNametName(){
+    public String getLastName(){
         return lastName;
     }
     public String getPatronymic(){

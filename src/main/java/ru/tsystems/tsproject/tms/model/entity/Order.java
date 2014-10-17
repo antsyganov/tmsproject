@@ -1,4 +1,4 @@
-package ru.tsystems.tsproject.tms.entity;
+package ru.tsystems.tsproject.tms.model.entity;
 
 import javax.persistence.*;
 

@@ -1,7 +1,7 @@
-package ru.tsystems.tsproject.tms.driver;
+package ru.tsystems.tsproject.tms.model.driver;
 
 
-import ru.tsystems.tsproject.tms.entity.Driver;
+import ru.tsystems.tsproject.tms.model.entity.Driver;
 
 /**
  * Created by Lena on 05.10.2014.
