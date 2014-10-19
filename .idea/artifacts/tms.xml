@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="tms">
+    <output-path>$PROJECT_DIR$/out/artifacts/tms</output-path>
+    <root id="archive" name="tms.war" />
+  </artifact>
+</component>

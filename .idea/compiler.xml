@@ -25,6 +25,9 @@
         <module name="tsprj" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tsprj" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

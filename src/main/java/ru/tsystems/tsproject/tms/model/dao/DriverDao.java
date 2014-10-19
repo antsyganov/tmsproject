@@ -1,36 +1,49 @@
 package ru.tsystems.tsproject.tms.model.dao;
 
 import ru.tsystems.tsproject.tms.model.entity.Driver;
+import ru.tsystems.tsproject.tms.model.entity.Order;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
- * Created by Lena on 17.10.2014.
+ * Created by Anton on 17.10.2014.
  */
-public class DriverDao extends AbstractDao<Driver> {
+public class DriverDAO extends AbstractDAO<Driver> {
+    public DriverDAO(EntityManager em){
+        super(em);
+    }
 
-    @Override
-    public List<Driver> findAll() {
-        return null;
+    public Driver getDriver(long id){
+        //em.getTransaction().begin();
+        //em.getTransaction().commit();
+        return em.find(Driver.class, id);
+    }
+    /*public List<Driver> getAllDriver(){
+        TypedQuery<Driver> namedQuery = em.createNamedQuery("Driver.getAll", Driver.class);
+        return namedQuery.getResultList();
+    }*/
+    public void delete(long id){
+        //em.getTransaction().begin();
+        em.remove(getDriver(id));
+        //em.getTransaction().commit();
     }
 
     @Override
-    public Driver findEntityById(long id) {
-        return null;
+    public List<Driver> getAll() {
+        //TypedQuery<Driver> namedQuery = em.createNamedQuery("Driver.getAll", Driver.class);
+        Query namedQuery = em.createNativeQuery("SELECT * FROM order", Order.class);
+        return namedQuery.getResultList();
     }
 
-    @Override
-    public boolean delete(long id) {
-        return false;
-    }
+    public Object findOnLicenseNumber(String licenseNumber){
+        //Wagon wagon = new Wagon();
 
-    @Override
-    public boolean delete(Driver entity) {
-        return false;
-    }
-
-    @Override
-    public boolean create(Driver entity) {
-        return false;
+        Query query = em.createQuery("SELECT e FROM driver e WHERE e.licenseNumber = :licenseNumber");
+        query.setParameter("licenseNumber", licenseNumber);
+        Object wgn = null;
+        wgn= query.getSingleResult();
+        return wgn;
     }
 }

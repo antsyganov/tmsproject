@@ -1,5 +1,7 @@
 package ru.tsystems.tsproject.tms;
 
+import ru.tsystems.tsproject.tms.model.entity.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -34,6 +36,10 @@ public class HelloWorld extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<h1>TCYGANOV11111</h1>");
 		//Driver nd = new Driver();
+        Entities driver = new Driver();
+        Entities wagon = new Wagon();
+        Entities order = new Order();
+        out.println("<h1>OK1</h1>");
 	}
 
 	/**

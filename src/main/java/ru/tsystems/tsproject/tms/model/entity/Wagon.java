@@ -1,12 +1,14 @@
 package ru.tsystems.tsproject.tms.model.entity;
 /**
- * Created by Lena on 04.10.2014.
+ * Created by Anton on 04.10.2014.
  */
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="wagon")
-public class Wagon {
+@NamedQuery(name = "Wagon.getAll", query = "SELECT c from Wagon c")
+public class Wagon extends Entities {
     @Id
     @Column(name = "id")
     private long id;
@@ -21,12 +23,12 @@ public class Wagon {
     private String classCapacity;
 
     @OneToOne
-    @JoinColumn(name = "order")
+    @JoinColumn(name = "order_unique_number")
     private Order order;
 
-    @OneToMany
-    @JoinColumn(name = "driver")
-    private Driver drivers;
+    @OneToMany (mappedBy = "driver")//посмотреть на эту фигню
+    //@JoinColumn(name = "driver")
+    private List<Driver> drivers;
 
     public Wagon(){
 
@@ -47,7 +49,7 @@ public class Wagon {
     public void setOrderNumber(Order orderNumber){
         this.order = orderNumber;
     }
-    public void setListOfDrivers(Driver drivers){
+    public void setListOfDrivers(List<Driver> drivers){
         this.drivers = drivers;
     }
 
@@ -66,7 +68,7 @@ public class Wagon {
     public Order getOrderNumber(){
         return order;
     }
-    public Driver getListOfDrivers(){
+    public List<Driver> getListOfDrivers(){
         return drivers;
     }
 }

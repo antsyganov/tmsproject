@@ -3,12 +3,12 @@ package ru.tsystems.tsproject.tms.model.entity;
 import javax.persistence.*;
 
 /**
- * Created by Lena on 04.10.2014.
+ * Created by Anton on 04.10.2014.
  */
-
 @Entity
 @Table(name="order")
-public class Order {
+@NamedQuery(name = "Order.getAll", query = "SELECT c from Order c")
+public class Order extends Entities {
     @Id
     @Column(name = "unique_number")
     private long uniqueNumber;//может заменить на int[] или стринг?
@@ -30,7 +30,7 @@ public class Order {
     private boolean deliveryStatus;
     //*****************************************
     @OneToOne
-    @JoinColumn(name = "wagon")
+    @JoinColumn(name = "wagon_id")
     private Wagon wagon;
 
     public Order(){

@@ -2,12 +2,13 @@ package ru.tsystems.tsproject.tms.model.entity;
 import javax.persistence.*;
 
 /**
- * Created by Lena on 04.10.2014.
+ * Created by Anton on 04.10.2014.
  */
 
 @Entity
 @Table(name="driver")
-public class Driver {
+@NamedQuery(name = "Driver.getAll", query = "SELECT c from Driver c")
+public class Driver extends Entities{
     @Id
     @Column(name = "id")
     private long id;
@@ -28,7 +29,7 @@ public class Driver {
     private String status;
 
     @OneToOne
-    @JoinColumn(name = "wagon")
+    @JoinColumn(name = "wagon_id")
     private Wagon wagon;
 
     public Driver(){

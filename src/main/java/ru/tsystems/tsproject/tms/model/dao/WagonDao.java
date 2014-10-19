@@ -1,36 +1,44 @@
 package ru.tsystems.tsproject.tms.model.dao;
 
+import ru.tsystems.tsproject.tms.model.entity.Order;
 import ru.tsystems.tsproject.tms.model.entity.Wagon;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
+import java.util.Objects;
 
 /**
- * Created by Lena on 17.10.2014.
+ * Created by Anton on 17.10.2014.
  */
-public class WagonDao extends AbstractDao<Wagon> {
+public class WagonDAO extends AbstractDAO<Wagon> {
+    public WagonDAO(EntityManager em){
+        super(em);
+    }
 
-    @Override
-    public List<Wagon> findAll() {
-        return null;
+    public Wagon getWagon(long id){
+        return em.find(Wagon.class, id);
+    }
+
+    public void delete(long id){
+        em.remove(getWagon(id));
     }
 
     @Override
-    public Wagon findEntityById(long id) {
-        return null;
+    public List<Wagon> getAll() {
+        //TypedQuery<Wagon> namedQuery = em.createNamedQuery("Wagon.getAll", Wagon.class);
+        Query namedQuery = em.createNativeQuery("SELECT * FROM order", Order.class);
+        return namedQuery.getResultList();
     }
 
-    @Override
-    public boolean delete(long id) {
-        return false;
+    public Object findOnRegNumber(String regNumber){
+        //Wagon wagon = new Wagon();
+
+        Query query = em.createQuery("SELECT e FROM wagon e WHERE e.regNumber = :regNumber");
+        query.setParameter("regNumber", regNumber);
+        Object wgn = null;
+        wgn= query.getSingleResult();
+        return wgn;
     }
 
-    @Override
-    public boolean delete(Wagon entity) {
-        return false;
-    }
-
-    @Override
-    public boolean create(Wagon entity) {
-        return false;
-    }
 }
