@@ -11,9 +11,9 @@ import java.util.List;
  * Created by Anton on 17.10.2014.
  */
 public class DriverDAO extends AbstractDAO<Driver> {
-    public DriverDAO(EntityManager em){
-        super(em);
-    }
+    //public DriverDAO(EntityManager em){
+        //super(em);
+    //}
 
     public Driver getDriver(long id){
         //em.getTransaction().begin();
@@ -33,7 +33,7 @@ public class DriverDAO extends AbstractDAO<Driver> {
     @Override
     public List<Driver> getAll() {
         //TypedQuery<Driver> namedQuery = em.createNamedQuery("Driver.getAll", Driver.class);
-        Query namedQuery = em.createNativeQuery("SELECT * FROM order", Order.class);
+        Query namedQuery = em.createNativeQuery("SELECT * FROM driver", Driver.class);
         return namedQuery.getResultList();
     }
 

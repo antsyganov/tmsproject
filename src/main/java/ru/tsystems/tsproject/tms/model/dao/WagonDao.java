@@ -12,9 +12,9 @@ import java.util.Objects;
  * Created by Anton on 17.10.2014.
  */
 public class WagonDAO extends AbstractDAO<Wagon> {
-    public WagonDAO(EntityManager em){
+    /*public WagonDAO(EntityManager em){
         super(em);
-    }
+    }*/
 
     public Wagon getWagon(long id){
         return em.find(Wagon.class, id);

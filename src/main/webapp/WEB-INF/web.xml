@@ -20,12 +20,36 @@
         <servlet-name>RegNewWagon</servlet-name>
         <display-name>RegNewWagon</display-name>
         <description></description>
-        <servlet-class>ru.tsystems.tsproject.tms.RegNewWagon</servlet-class>
+        <servlet-class>ru.tsystems.tsproject.tms.model.RegNewWagonServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>RegNewWagon</servlet-name>
         <url-pattern>/RegNewWagon</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddNewDriver</servlet-name>
+        <display-name>AddNewDriver</display-name>
+        <description></description>
+        <servlet-class>ru.tsystems.tsproject.tms.model.AddNewDriverServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddNewDriver</servlet-name>
+        <url-pattern>/AddNewDriver</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddNewOrder</servlet-name>
+        <display-name>AddNewOrder</display-name>
+        <description></description>
+        <servlet-class>ru.tsystems.tsproject.tms.model.AddNewOrderServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddNewOrder</servlet-name>
+        <url-pattern>/AddNewOrder</url-pattern>
     </servlet-mapping>
 
 </web-app>

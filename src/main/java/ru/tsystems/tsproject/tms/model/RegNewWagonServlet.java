@@ -1,4 +1,4 @@
-package ru.tsystems.tsproject.tms;
+package ru.tsystems.tsproject.tms.model;
 
 import ru.tsystems.tsproject.tms.model.employee.ControlDrivers;
 import ru.tsystems.tsproject.tms.model.employee.ControlWagon;
@@ -18,8 +18,10 @@ import java.io.PrintWriter;
 /**
  * Created by Anton on 19.10.2014.
  */
-@WebServlet(name = "RegNewWagon")
-public class RegNewWagon extends HttpServlet {
+//@WebServlet(name = "RegNewWagonServlet")
+public class RegNewWagonServlet extends HttpServlet {
+    private static ControlWagon controlWagon = new ControlWagon();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -37,12 +39,12 @@ public class RegNewWagon extends HttpServlet {
         wagon.setOrderNumber(null);
         wagon.setListOfDrivers(null);
 
-        ControlWagon cntdr = new ControlWagon();
+
         //Проверим существует ли фура стаким ргистрационным номером
-        if( cntdr.findOnRN(regNumber) )
+        if( controlWagon.findOnRN(regNumber) )
             out.println("Wagon already exist!");
         //Если нет, то создаем новую
-        cntdr.addNewWagon(wagon);
+        controlWagon.addNewWagon(wagon);
 
 
 

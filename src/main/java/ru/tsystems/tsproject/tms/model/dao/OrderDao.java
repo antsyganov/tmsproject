@@ -11,9 +11,9 @@ import java.util.List;
  * Created by Anton on 17.10.2014.
  */
 public class OrderDAO extends AbstractDAO<Order> {
-    public OrderDAO(EntityManager em){
-        super(em);
-    }
+    //public OrderDAO(EntityManager em){
+       //super(em);
+    //}
     public Driver getOrder(long id){
         //em.getTransaction().begin();
         //em.getTransaction().commit();

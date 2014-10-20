@@ -14,15 +14,14 @@ import java.util.Objects;
 public abstract class AbstractDAO<T extends Entities> {
     protected EntityManager em = Persistence.createEntityManagerFactory("tms_db").createEntityManager();
 
-    public AbstractDAO(EntityManager em){
-        this.em = em;
-
-    }
+    //public AbstractDAO(EntityManager em){
+        //this.em = em;
+    //}
 
     public void add(T entity){
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         em.persist(entity);
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
     }
     /*public T get(long id){
         return em.find(T.class, id);
@@ -34,5 +33,13 @@ public abstract class AbstractDAO<T extends Entities> {
         em.remove(entity);
     }
     public abstract List<T> getAll();
+
+    public void  beginTransaction(){
+        em.getTransaction().begin();
+    }
+    public void commitTransaction(){
+        em.getTransaction().commit();
+    }
+
 
 }

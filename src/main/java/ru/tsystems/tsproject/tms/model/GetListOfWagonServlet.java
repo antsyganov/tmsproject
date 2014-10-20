@@ -1,7 +1,7 @@
 package ru.tsystems.tsproject.tms.model;
 
-import ru.tsystems.tsproject.tms.model.employee.ControlDrivers;
-import ru.tsystems.tsproject.tms.model.entity.Driver;
+import ru.tsystems.tsproject.tms.model.employee.ControlWagon;
+import ru.tsystems.tsproject.tms.model.entity.Wagon;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +14,16 @@ import java.util.List;
 /**
  * Created by Anton on 19.10.2014.
  */
-@WebServlet(name = "GetListOfDriver")
-public class GetListOfDriver extends HttpServlet {
+@WebServlet(name = "GetListOfWagonServlet")
+public class GetListOfWagonServlet extends HttpServlet {
+    private static ControlWagon controlWagon = new ControlWagon();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ControlDrivers controlDrivers = new ControlDrivers();
-        List<Driver> driverList = controlDrivers.getListDriver();
+        //ControlWagon controlWagon = new ControlWagon();
+        List<Wagon> listWagon = controlWagon.getListWagon();
+        //сюда возможно вписать распределение по полям
     }
 }

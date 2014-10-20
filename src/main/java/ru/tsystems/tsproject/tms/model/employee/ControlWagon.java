@@ -14,42 +14,50 @@ import java.util.Objects;
  * Created by Anton on 04.10.2014.
  */
 public class ControlWagon {
-    protected EntityManager em = Persistence.createEntityManagerFactory("tms_db").createEntityManager();
+    //protected EntityManager em = Persistence.createEntityManagerFactory("tms_db").createEntityManager();
 
     public List<Wagon> getListWagon(){
         List<Wagon> list;
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
 
-        AbstractDAO<Wagon> wagon = new WagonDAO(em);
+        WagonDAO wagon = new WagonDAO();
+        wagon.beginTransaction();
         list = wagon.getAll();
 
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
+        wagon.commitTransaction();
 
         return list;
     }
 
     public void addNewWagon(Wagon wagon){
-        em.getTransaction().begin();
-        AbstractDAO<Wagon> instance = new WagonDAO(em);
+        //em.getTransaction().begin();
+        WagonDAO instance = new WagonDAO();
+        instance.beginTransaction();
         instance.add(wagon);
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
+        instance.commitTransaction();
     }
     public void addNewWagon(){
         Wagon wagon = new Wagon();
         //запись новой фуры в базу
 
-        em.getTransaction().begin();
-        AbstractDAO<Wagon> instance = new WagonDAO(em);
+        //em.getTransaction().begin();
+        WagonDAO instance = new WagonDAO();
+        instance.beginTransaction();
         instance.add(wagon);
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
+        instance.commitTransaction();
     }
     public boolean findOnRN(String regNumber){
         //Wagon wagon = new Wagon();
 
-        em.getTransaction().begin();
-        WagonDAO instance = new WagonDAO(em);
+        //em.getTransaction().begin();
+        WagonDAO instance = new WagonDAO();
+        instance.beginTransaction();
         Object ql = instance.findOnRegNumber(regNumber);
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
+        instance.commitTransaction();
 
         if(ql == null){
             return false;
