@@ -16,40 +16,42 @@
   	<url-pattern>/HelloWorld</url-pattern>
   </servlet-mapping>
 
+
     <servlet>
-        <servlet-name>RegNewWagon</servlet-name>
-        <display-name>RegNewWagon</display-name>
+        <servlet-name>RegNewWagonServlet</servlet-name>
+        <display-name>RegNewWagonServlet</display-name>
         <description></description>
-        <servlet-class>ru.tsystems.tsproject.tms.model.RegNewWagonServlet</servlet-class>
+        <servlet-class>ru.tsystems.tsproject.tms.service.RegNewWagonServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>RegNewWagon</servlet-name>
-        <url-pattern>/RegNewWagon</url-pattern>
+        <servlet-name>RegNewWagonServlet</servlet-name>
+        <url-pattern>/RegNewWagonServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>AddNewDriver</servlet-name>
-        <display-name>AddNewDriver</display-name>
+        <servlet-name>AddNewDriverServlet</servlet-name>
+        <display-name>AddNewDriverServlet</display-name>
         <description></description>
-        <servlet-class>ru.tsystems.tsproject.tms.model.AddNewDriverServlet</servlet-class>
+        <servlet-class>ru.tsystems.tsproject.tms.service.AddNewDriverServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>AddNewDriver</servlet-name>
-        <url-pattern>/AddNewDriver</url-pattern>
+        <servlet-name>AddNewDriverServlet</servlet-name>
+        <url-pattern>/AddNewDriverServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>AddNewOrder</servlet-name>
-        <display-name>AddNewOrder</display-name>
+        <servlet-name>AddNewOrderServlet</servlet-name>
+        <display-name>AddNewOrderServlet</display-name>
         <description></description>
-        <servlet-class>ru.tsystems.tsproject.tms.model.AddNewOrderServlet</servlet-class>
+        <servlet-class>ru.tsystems.tsproject.tms.service.AddNewOrderServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>AddNewOrder</servlet-name>
-        <url-pattern>/AddNewOrder</url-pattern>
+        <servlet-name>AddNewOrderServlet</servlet-name>
+        <url-pattern>/AddNewOrderServlet</url-pattern>
     </servlet-mapping>
+
 
 </web-app>

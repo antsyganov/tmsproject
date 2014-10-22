@@ -22,11 +22,13 @@ public class Wagon extends Entities {
     @Column(name = "class_capacity")
     private String classCapacity;
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "order_unique_number")
-    private Order order;
+    private Order order;*/
+    @OneToMany(mappedBy = "wagon")
+    private List<Order> order;
 
-    @OneToMany (mappedBy = "driver")//посмотреть на эту фигню
+    @ManyToMany (mappedBy = "wagon")//посмотреть на эту фигню
     //@JoinColumn(name = "driver")
     private List<Driver> drivers;
 
@@ -46,8 +48,8 @@ public class Wagon extends Entities {
     public void setClassCapacity(String classCapacity){
         this.classCapacity = classCapacity;
     }
-    public void setOrderNumber(Order orderNumber){
-        this.order = orderNumber;
+    public void setOrderNumber(List<Order> order){
+        this.order = order;
     }
     public void setListOfDrivers(List<Driver> drivers){
         this.drivers = drivers;
@@ -65,7 +67,7 @@ public class Wagon extends Entities {
     public String getClassCapacity(){
         return classCapacity;
     }
-    public Order getOrderNumber(){
+    public List<Order> getOrder(){
         return order;
     }
     public List<Driver> getListOfDrivers(){

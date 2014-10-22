@@ -29,8 +29,8 @@ public class Order extends Entities {
     @Column(name = "delivery_status")
     private boolean deliveryStatus;
     //*****************************************
-    @OneToOne
-    @JoinColumn(name = "wagon_id")
+    @ManyToOne
+    @JoinColumn(name = "wagon_id")//спросить нужен ли join
     private Wagon wagon;
 
     public Order(){

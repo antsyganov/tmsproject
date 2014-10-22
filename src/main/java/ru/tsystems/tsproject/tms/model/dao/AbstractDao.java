@@ -4,6 +4,7 @@ import ru.tsystems.tsproject.tms.model.entity.Driver;
 import ru.tsystems.tsproject.tms.model.entity.Entities;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,7 @@ import java.util.Objects;
  */
 public abstract class AbstractDAO<T extends Entities> {
     protected EntityManager em = Persistence.createEntityManagerFactory("tms_db").createEntityManager();
+    //protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("tms_db");
 
     //public AbstractDAO(EntityManager em){
         //this.em = em;

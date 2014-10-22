@@ -37,13 +37,14 @@ public class DriverDAO extends AbstractDAO<Driver> {
         return namedQuery.getResultList();
     }
 
-    public Object findOnLicenseNumber(String licenseNumber){
+    public Driver findOnLicenseNumber(String licenseNumber){
         //Wagon wagon = new Wagon();
 
         Query query = em.createQuery("SELECT e FROM driver e WHERE e.licenseNumber = :licenseNumber");
         query.setParameter("licenseNumber", licenseNumber);
-        Object wgn = null;
-        wgn= query.getSingleResult();
-        return wgn;
+        //Object wgn = null;
+        Driver driver = null;
+        driver = (Driver)query.getSingleResult();
+        return driver;
     }
 }

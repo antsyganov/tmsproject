@@ -63,10 +63,17 @@ public class ControlOrder {
         ord.commitTransaction();
 
     }
-    void appointWagon(){
+    void appointWagon(Order order){
+        String status = order.getStatus();
+        if(!status.equalsIgnoreCase("Confirmed"))
+            return;
+
 
     }
-    void changeStatus(){
+    void changeStatus(Order order){
+        String status = order.getStatus();
+        if(!status.equalsIgnoreCase("Performed"))
+            return;
 
     }
 }

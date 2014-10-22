@@ -1,5 +1,6 @@
 package ru.tsystems.tsproject.tms.model.entity;
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Anton on 04.10.2014.
@@ -28,9 +29,12 @@ public class Driver extends Entities{
     @Column(name = "status")
     private String status;
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "wagon_id")
-    private Wagon wagon;
+    private Wagon wagon;*/
+
+    @ManyToMany
+    private List<Wagon> wagon;
 
     public Driver(){
 
@@ -54,7 +58,7 @@ public class Driver extends Entities{
     public void setStatus(String status){
         this.status = status;
     }
-    public void setWagon(Wagon wagon){
+    public void setWagon(List<Wagon> wagon){
         this.wagon = wagon;
     }
 
@@ -76,7 +80,7 @@ public class Driver extends Entities{
     public String getStatus(){
         return status;
     }
-    public Wagon getWagon(){
+    public List<Wagon> getWagon(){
         return wagon;
     }
 
