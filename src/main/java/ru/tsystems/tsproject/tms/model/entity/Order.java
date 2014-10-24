@@ -11,6 +11,7 @@ import javax.persistence.*;
 public class Order extends Entities {
     @Id
     @Column(name = "unique_number")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long uniqueNumber;//может заменить на int[] или стринг?
 
     @Column(name = "status")
@@ -29,8 +30,9 @@ public class Order extends Entities {
     @Column(name = "delivery_status")
     private boolean deliveryStatus;
     //*****************************************
-    @ManyToOne
-    @JoinColumn(name = "wagon_id")//спросить нужен ли join
+    //@ManyToOne
+    //@JoinColumn(name = "wagon_id")спросить нужен ли join
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "drivers")
     private Wagon wagon;
 
     public Order(){
@@ -79,5 +81,18 @@ public class Order extends Entities {
     }
     public Wagon getWagon(){
         return wagon;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "uniqueNumber=" + uniqueNumber +
+                ", status='" + status + '\'' +
+                ", gpsCoordinates='" + gpsCoordinates + '\'' +
+                ", load='" + load + '\'' +
+                ", weight=" + weight +
+                ", deliveryStatus=" + deliveryStatus +
+                ", wagon=" + wagon +
+                '}';
     }
 }

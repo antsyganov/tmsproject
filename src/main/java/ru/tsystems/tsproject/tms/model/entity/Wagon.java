@@ -11,6 +11,7 @@ import java.util.List;
 public class Wagon extends Entities {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "reg_number")
@@ -28,8 +29,13 @@ public class Wagon extends Entities {
     @OneToMany(mappedBy = "wagon")
     private List<Order> order;
 
-    @ManyToMany (mappedBy = "wagon")//посмотреть на эту фигню
+    //@ManyToMany (mappedBy = "wagon")посмотреть на эту фигню
     //@JoinColumn(name = "driver")
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name="wagon_has_driver",
+            joinColumns = {@JoinColumn(name="wagon_id")},
+            inverseJoinColumns = {@JoinColumn(name="driver_id")})
     private List<Driver> drivers;
 
     public Wagon(){
@@ -72,5 +78,17 @@ public class Wagon extends Entities {
     }
     public List<Driver> getListOfDrivers(){
         return drivers;
+    }
+
+    @Override
+    public String toString() {
+        return "Wagon{" +
+                "id=" + id +
+                ", regNumber='" + regNumber + '\'' +
+                ", numberOfDriver=" + numberOfDriver +
+                ", classCapacity='" + classCapacity + '\'' +
+                ", order=" + order +
+                ", drivers=" + drivers +
+                '}';
     }
 }

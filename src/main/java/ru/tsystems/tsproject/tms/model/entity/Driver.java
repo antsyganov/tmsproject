@@ -12,6 +12,7 @@ import java.util.List;
 public class Driver extends Entities{
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "first_name")
@@ -33,7 +34,7 @@ public class Driver extends Entities{
     @JoinColumn(name = "wagon_id")
     private Wagon wagon;*/
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "drivers")
     private List<Wagon> wagon;
 
     public Driver(){
@@ -52,7 +53,7 @@ public class Driver extends Entities{
     public void setPatronymic(String patronymic){
         this.patronymic = patronymic;
     }
-    public void setLicenseNumber(String licenseNumber1){
+    public void setLicenseNumber(String licenseNumber){
         this.licenseNumber = licenseNumber;
     }
     public void setStatus(String status){
@@ -84,4 +85,16 @@ public class Driver extends Entities{
         return wagon;
     }
 
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", licenseNumber='" + licenseNumber + '\'' +
+                ", status='" + status + '\'' +
+                ", wagon=" + wagon +
+                '}';
+    }
 }
