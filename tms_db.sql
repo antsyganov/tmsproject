@@ -43,9 +43,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tms_db`.`order`
+-- Table `tms_db`.`order_info`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tms_db`.`order` (
+CREATE TABLE IF NOT EXISTS `tms_db`.`order_info` (
   `unique_number` INT NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(20) NOT NULL,
   `gps_coordinates` VARCHAR(25) NULL,
