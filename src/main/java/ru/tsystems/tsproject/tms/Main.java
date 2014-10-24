@@ -7,6 +7,8 @@ import ru.tsystems.tsproject.tms.model.entity.Driver;
 import ru.tsystems.tsproject.tms.model.entity.Order;
 import ru.tsystems.tsproject.tms.model.entity.Wagon;
 
+import java.util.List;
+
 /**
  * Created by Anton on 23.10.2014.
  */
@@ -20,10 +22,10 @@ public class Main {
         Order order = new Order();
         //Wagon wagon = new Wagon();
         //***************************************
-        /*driver.setFirstName("Petr");
-        driver.setLastName("Petrov");
-        driver.setPatronymic("Petrovich");
-        driver.setLicenseNumber("aa12345");
+        /*driver.setFirstName("Roman");
+        driver.setLastName("Romanov");
+        driver.setPatronymic("Romanovich");
+        driver.setLicenseNumber("cc12345");
         driver.setStatus("Not on shift");*/
 
         /*wagon.setRegNumber("aa12345");
@@ -36,10 +38,15 @@ public class Main {
         order.setGpsCoordinates("111'2123'12313");
         order.setDeliveryStatus(false);
         order.setLoad("apple");
-        order.setWeight(10);
+        order.setWeight(20);
         order.setWagon(null);
-        System.out.println(order.getStatus() + " " + order.getGpsCoordinates() + " " + order.getDeliveryStatus() + " " + order.getLoad() + " " + order.getWeight() + order.getWagon() );
+        System.out.println(order.toString());
         System.out.println("OK2");
+
+        //List<Driver> list = controlDrivers.getListDriver();
+        //System.out.println(list);
+        //System.out.println(controlDrivers.findOnLN("aa12345"));
+
 
         //controlDrivers.addNewDriver(driver);
         controlOrder.addNewOrder(order);

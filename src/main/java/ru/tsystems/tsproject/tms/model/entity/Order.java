@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Anton on 04.10.2014.
  */
 @Entity
-@Table(name="order")
+@Table(name="order_info")
 @NamedQuery(name = "Order.getAll", query = "SELECT c from Order c")
 public class Order extends Entities {
     @Id
@@ -30,9 +30,8 @@ public class Order extends Entities {
     @Column(name = "delivery_status")
     private boolean deliveryStatus;
     //*****************************************
-    //@ManyToOne
-    //@JoinColumn(name = "wagon_id")спросить нужен ли join
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "drivers")
+    @ManyToOne
+    @JoinColumn(name = "wagon_id")//спросить нужен ли join
     private Wagon wagon;
 
     public Order(){

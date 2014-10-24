@@ -29,13 +29,14 @@ public class Wagon extends Entities {
     @OneToMany(mappedBy = "wagon")
     private List<Order> order;
 
-    //@ManyToMany (mappedBy = "wagon")посмотреть на эту фигню
-    //@JoinColumn(name = "driver")
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+
+    /*@ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name="wagon_has_driver",
             joinColumns = {@JoinColumn(name="wagon_id")},
-            inverseJoinColumns = {@JoinColumn(name="driver_id")})
+            inverseJoinColumns = {@JoinColumn(name="driver_id")})*/
+    @ManyToMany (mappedBy = "wagon")//посмотреть на эту фигню
+    //@JoinColumn(name = "driver")
     private List<Driver> drivers;
 
     public Wagon(){

@@ -41,7 +41,9 @@ public class DriverDAO extends AbstractDAO<Driver> {
         //Wagon wagon = new Wagon();
 
         Query query = em.createQuery("SELECT e FROM driver e WHERE e.licenseNumber = :licenseNumber");
+        //Query query = em.createNativeQuery("SELECT e.* FROM driver e WHERE e.licenseNumber = a.licenseNumber", Driver.class);
         query.setParameter("licenseNumber", licenseNumber);
+        //query.setParameter("licenseNumber", licenseNumber);
         //Object wgn = null;
         Driver driver = null;
         driver = (Driver)query.getSingleResult();

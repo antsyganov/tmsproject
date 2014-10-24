@@ -34,7 +34,8 @@ public class Driver extends Entities{
     @JoinColumn(name = "wagon_id")
     private Wagon wagon;*/
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "drivers")
+    //@ManyToMany(fetch = FetchType.EAGER, mappedBy = "drivers")
+    @ManyToMany
     private List<Wagon> wagon;
 
     public Driver(){
