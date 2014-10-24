@@ -38,7 +38,7 @@ public class DriverService {
         DriverDAO driverDAO = new DriverDAO();
         driverDAO.beginTransaction();
         driver = driverDAO.getDriver(driverId);
-        driverDAO.commitTransaction();
+        //driverDAO.commitTransaction();
 
         if(driver == null)
             //нет такого водителя!
@@ -68,6 +68,7 @@ public class DriverService {
                 driver.setStatus(status);//меняем статус водителя на "За рулем", поскольку нет другого водителя за рулем
             }
         }
+        driverDAO.commitTransaction();
         return true;
     }
 }

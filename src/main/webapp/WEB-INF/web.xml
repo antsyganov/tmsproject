@@ -21,7 +21,7 @@
         <servlet-name>RegNewWagonServlet</servlet-name>
         <display-name>RegNewWagonServlet</display-name>
         <description></description>
-        <servlet-class>ru.tsystems.tsproject.tms.service.RegNewWagonServlet</servlet-class>
+        <servlet-class>ru.tsystems.tsproject.tms.controller.RegNewWagonServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -33,7 +33,7 @@
         <servlet-name>AddNewDriverServlet</servlet-name>
         <display-name>AddNewDriverServlet</display-name>
         <description></description>
-        <servlet-class>ru.tsystems.tsproject.tms.service.AddNewDriverServlet</servlet-class>
+        <servlet-class>ru.tsystems.tsproject.tms.controller.AddNewDriverServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -45,7 +45,7 @@
         <servlet-name>AddNewOrderServlet</servlet-name>
         <display-name>AddNewOrderServlet</display-name>
         <description></description>
-        <servlet-class>ru.tsystems.tsproject.tms.service.AddNewOrderServlet</servlet-class>
+        <servlet-class>ru.tsystems.tsproject.tms.controller.AddNewOrderServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

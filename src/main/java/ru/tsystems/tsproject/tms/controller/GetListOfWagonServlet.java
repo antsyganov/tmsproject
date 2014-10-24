@@ -1,4 +1,4 @@
-package ru.tsystems.tsproject.tms.service;
+package ru.tsystems.tsproject.tms.controller;
 
 import ru.tsystems.tsproject.tms.model.employee.ControlWagon;
 import ru.tsystems.tsproject.tms.model.entity.Wagon;

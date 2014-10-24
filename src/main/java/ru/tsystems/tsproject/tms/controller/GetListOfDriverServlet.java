@@ -1,4 +1,4 @@
-package ru.tsystems.tsproject.tms.service;
+package ru.tsystems.tsproject.tms.controller;
 
 import ru.tsystems.tsproject.tms.model.employee.ControlDrivers;
 import ru.tsystems.tsproject.tms.model.entity.Driver;

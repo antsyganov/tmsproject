@@ -30,17 +30,11 @@
             <version>1.2</version>
         </dependency>
 
-        <dependency> <!-- * -->
-            <groupId>javaee</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>5</version>
-        </dependency>
-
         <dependency>
-            <groupId>javax</groupId>  <!-- * -->
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.22</version>
+            <!--<scope>test</scope>-->
         </dependency>
 
         <dependency>
@@ -62,12 +56,20 @@
             <version>1.0.1.Final</version>
         </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.20</version>
-            <!--<scope>test</scope>-->
+        <dependency> <!-- * -->
+            <groupId>javaee</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>5</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>  <!-- * -->
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build> <!-- * -->

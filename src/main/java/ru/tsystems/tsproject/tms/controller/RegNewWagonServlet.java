@@ -1,14 +1,9 @@
-package ru.tsystems.tsproject.tms.service;
+package ru.tsystems.tsproject.tms.controller;
 
-import ru.tsystems.tsproject.tms.model.employee.ControlDrivers;
 import ru.tsystems.tsproject.tms.model.employee.ControlWagon;
-import ru.tsystems.tsproject.tms.model.entity.Driver;
-import ru.tsystems.tsproject.tms.model.entity.Entities;
-import ru.tsystems.tsproject.tms.model.entity.Order;
 import ru.tsystems.tsproject.tms.model.entity.Wagon;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

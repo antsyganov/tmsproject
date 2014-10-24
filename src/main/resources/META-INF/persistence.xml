@@ -3,13 +3,21 @@
 
     <persistence-unit name="tms_db" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
         <!--<validation-mode>AUTO</validation-mode>-->
         <class>ru.tsystems.tsproject.tms.model.entity.Driver</class>
         <class>ru.tsystems.tsproject.tms.model.entity.Order</class>
         <class>ru.tsystems.tsproject.tms.model.entity.Wagon</class>
 
+        <class>ru.tsystems.tsproject.tms.model.entity.Entities</class>
+
+        <class>ru.tsystems.tsproject.tms.model.dao.AbstractDAO</class>
+        <class>ru.tsystems.tsproject.tms.model.dao.DriverDAO</class>
+        <class>ru.tsystems.tsproject.tms.model.dao.OrderDAO</class>
+        <class>ru.tsystems.tsproject.tms.model.dao.WagonDAO</class>
+
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/school"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/tms_db"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value=""/>
