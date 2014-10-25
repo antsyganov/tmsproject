@@ -13,8 +13,9 @@ import java.util.Objects;
  * Created by Anton on 17.10.2014.
  */
 public abstract class AbstractDAO<T extends Entities> {
-    protected EntityManager em = Persistence.createEntityManagerFactory("tms_db").createEntityManager();
-    //protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("tms_db");
+    protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("tms_db");
+    protected EntityManager em = emf.createEntityManager();
+
 
     //public AbstractDAO(EntityManager em){
         //this.em = em;
@@ -41,6 +42,11 @@ public abstract class AbstractDAO<T extends Entities> {
     }
     public void commitTransaction(){
         em.getTransaction().commit();
+    }
+
+    public void close(){
+        em.close();
+        emf.close();
     }
 
 

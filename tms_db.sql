@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `tms_db`.`order_info` (
   `unique_number` INT NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(20) NOT NULL,
   `gps_coordinates` VARCHAR(25) NULL,
-  `load` VARCHAR(45) NULL,
+  `load_name` VARCHAR(45) NULL,
   `weight` INT NULL,
   `delivery_status` TINYINT(1) NULL,
   `wagon_id` INT NOT NULL,

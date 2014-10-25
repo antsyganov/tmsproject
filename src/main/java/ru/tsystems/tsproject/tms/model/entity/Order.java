@@ -21,7 +21,7 @@ public class Order extends Entities {
     @Column(name = "gps_coordinates")
     private String gpsCoordinates;//подумать про String
 
-    @Column(name = "load")
+    @Column(name = "load_name")
     private String load;
 
     @Column(name = "weight")
@@ -30,8 +30,8 @@ public class Order extends Entities {
     @Column(name = "delivery_status")
     private boolean deliveryStatus;
     //*****************************************
-    @ManyToOne
-    @JoinColumn(name = "wagon_id")//спросить нужен ли join
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "wagon_id", nullable = true)
     private Wagon wagon;
 
     public Order(){
@@ -82,7 +82,7 @@ public class Order extends Entities {
         return wagon;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Order{" +
                 "uniqueNumber=" + uniqueNumber +
@@ -93,5 +93,5 @@ public class Order extends Entities {
                 ", deliveryStatus=" + deliveryStatus +
                 ", wagon=" + wagon +
                 '}';
-    }
+    }*/
 }

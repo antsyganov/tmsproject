@@ -15,7 +15,7 @@ import java.util.List;
 public class ControlOrder {
     //protected EntityManager em = Persistence.createEntityManagerFactory("tms_db").createEntityManager();
     
-    public void getListOrder(){
+    public List<Order> getListOrder(){
         List<Order> list;
         //em.getTransaction().begin();
         OrderDAO orders = new OrderDAO();
@@ -23,6 +23,7 @@ public class ControlOrder {
         list = orders.getAll();
         //em.getTransaction().commit();
         orders.commitTransaction();
+        return list;
     }
     public void addNewOrder(Order order){
         //Order newOrder = new Order();
@@ -35,6 +36,7 @@ public class ControlOrder {
         dorder.add(order);
         //em.getTransaction().commit();
         dorder.commitTransaction();
+        dorder.close();
     }
 
     public void addNewOrder(){
@@ -49,15 +51,18 @@ public class ControlOrder {
         //em.getTransaction().commit();
         order.commitTransaction();
     }
-    public void addLoad(String orderNumber){
+    public void addLoad(long orderNumber){
         //получаем заказа с заданым номером orderNumber
-        Order order = new Order();
-        order.setLoad("Load");
-        order.setStatus("Confirmed");
+        Order order;
+        //order.setLoad("Load");
+        //order.setStatus("Confirmed");
         //запись в базу
         //em.getTransaction().begin();
         OrderDAO ord = new OrderDAO();
         ord.beginTransaction();
+        order = ord.getOrder(orderNumber);
+        order.setLoad("Load");
+        order.setStatus("Confirmed");
         ord.update(order);
         //em.getTransaction().commit();
         ord.commitTransaction();

@@ -27,14 +27,14 @@ public class WagonDAO extends AbstractDAO<Wagon> {
     @Override
     public List<Wagon> getAll() {
         //TypedQuery<Wagon> namedQuery = em.createNamedQuery("Wagon.getAll", Wagon.class);
-        Query namedQuery = em.createNativeQuery("SELECT * FROM order", Order.class);
+        Query namedQuery = em.createNativeQuery("SELECT * FROM wagon", Wagon.class);
         return namedQuery.getResultList();
     }
 
     public Object findOnRegNumber(String regNumber){
         //Wagon wagon = new Wagon();
 
-        Query query = em.createQuery("SELECT e FROM wagon e WHERE e.regNumber = :regNumber");
+        Query query = em.createQuery("SELECT e FROM Wagon e WHERE e.regNumber = :regNumber");
         query.setParameter("regNumber", regNumber);
         Object wgn = null;
         wgn= query.getSingleResult();

@@ -38,6 +38,7 @@ public class ControlDrivers {
         instance.add(driver);
         //em.getTransaction().commit();
         instance.commitTransaction();
+        instance.close();
     }
 
     public void addNewDriver(Driver driver){
@@ -52,6 +53,7 @@ public class ControlDrivers {
         instance.add(driver);
         //em.getTransaction().commit();
         instance.commitTransaction();
+        instance.close();
     }
 
     public boolean findOnLN(String licenseNumber){

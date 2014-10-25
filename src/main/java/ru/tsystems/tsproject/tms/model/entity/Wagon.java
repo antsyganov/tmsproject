@@ -81,7 +81,7 @@ public class Wagon extends Entities {
         return drivers;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Wagon{" +
                 "id=" + id +
@@ -91,5 +91,5 @@ public class Wagon extends Entities {
                 ", order=" + order +
                 ", drivers=" + drivers +
                 '}';
-    }
+    }*/
 }

@@ -14,10 +14,10 @@ public class OrderDAO extends AbstractDAO<Order> {
     //public OrderDAO(EntityManager em){
        //super(em);
     //}
-    public Driver getOrder(long id){
+    public Order getOrder(long id){
         //em.getTransaction().begin();
         //em.getTransaction().commit();
-        return em.find(Driver.class, id);
+        return em.find(Order.class, id);
     }
     /*public List<Order> getAllDriver(){
         TypedQuery<Order> namedQuery = em.createNamedQuery("Order.getAll", Order.class);
@@ -32,7 +32,9 @@ public class OrderDAO extends AbstractDAO<Order> {
     @Override
     public List<Order> getAll() {
         //TypedQuery<Order> namedQuery = em.createNamedQuery("Order.getAll", Order.class);
-        Query namedQuery = em.createNativeQuery("SELECT * FROM order", Order.class);
+        Query namedQuery = em.createNativeQuery("SELECT * FROM order_info", Order.class);
         return namedQuery.getResultList();
     }
+
+    //public Order getOrder(String )
 }

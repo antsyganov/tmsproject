@@ -18,12 +18,14 @@ public class DriverService {
         Driver driver;
         DriverDAO driverDAO = new DriverDAO();
         driverDAO.beginTransaction();
+        System.out.println("1");
         driver = driverDAO.findOnLicenseNumber(licenseNumber);
         driverDAO.commitTransaction();
         if(driver == null)
             return; //нет водителя с такими правами
 
         //Wagon wagon = driver.getWagon();
+        System.out.println("2");
         List<Wagon> wagon = driver.getWagon();
 
 
@@ -37,23 +39,29 @@ public class DriverService {
         Driver driver = new Driver();
         DriverDAO driverDAO = new DriverDAO();
         driverDAO.beginTransaction();
+        System.out.println("1");
         driver = driverDAO.getDriver(driverId);
         //driverDAO.commitTransaction();
+        System.out.println("2");
 
         if(driver == null)
             //нет такого водителя!
             return false;
+        System.out.println("3");
 
         if(driver.getStatus() == status)
             //статусы совпадают
             return false;
+        System.out.println("4");
 
         //Wagon wagon = driver.getWagon();
         List<Wagon> wagon = driver.getWagon();
+        System.out.println("5");
 
         if(wagon.get(0).getOrder() == null)
             //не можем сменить статус. не вылоняет ни одни заказ
             return false;
+        System.out.println("6");
         if(wagon.get(0).getNumberOfDriver() == 1)
             driver.setStatus(status); //поменяли статус. водитель всего один
         else {

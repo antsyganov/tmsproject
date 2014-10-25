@@ -37,6 +37,7 @@ public class ControlWagon {
         instance.add(wagon);
         //em.getTransaction().commit();
         instance.commitTransaction();
+        instance.close();
     }
     public void addNewWagon(){
         Wagon wagon = new Wagon();
