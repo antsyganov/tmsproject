@@ -26,17 +26,17 @@ public class Wagon extends Entities {
     /*@OneToOne
     @JoinColumn(name = "order_unique_number")
     private Order order;*/
-    @OneToMany(mappedBy = "wagon")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "wagon", cascade = CascadeType.PERSIST)
     private List<Order> order;
 
 
 
-    /*@ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name="wagon_has_driver",
             joinColumns = {@JoinColumn(name="wagon_id")},
-            inverseJoinColumns = {@JoinColumn(name="driver_id")})*/
-    @ManyToMany (mappedBy = "wagon")//посмотреть на эту фигню
-    //@JoinColumn(name = "driver")
+            inverseJoinColumns = {@JoinColumn(name="driver_id")})
+    //@ManyToMany (mappedBy = "wagon") Ваще была эта
+
     private List<Driver> drivers;
 
     public Wagon(){
@@ -81,7 +81,7 @@ public class Wagon extends Entities {
         return drivers;
     }
 
-    /*@Override
+    @Override
     public String toString() {
         return "Wagon{" +
                 "id=" + id +
@@ -91,5 +91,5 @@ public class Wagon extends Entities {
                 ", order=" + order +
                 ", drivers=" + drivers +
                 '}';
-    }*/
+    }
 }

@@ -25,16 +25,16 @@ public class Main {
         Wagon wagon = new Wagon();
         //Driver driver1 = new Driver();
         //***************************************
-        /*driver.setFirstName("Rik");
-        driver.setLastName("Rikov");
-        driver.setPatronymic("Rikovich");
-        driver.setLicenseNumber("ff12345");
-        driver.setStatus("Not on shift");
-        driver.setWagon(null);*/
+        /*driver.setFirstName("Mik");
+        driver.setLastName("Mikov");
+        driver.setPatronymic("Mikovich");
+        driver.setLicenseNumber("zz12345");
+        driver.setStatus("Not on shift");*/
+        //driver.setWagon(null);
 
-        wagon.setRegNumber("ww12345");
+        /*wagon.setRegNumber("zz12345");
         wagon.setNumberOfDriver(2);
-        wagon.setClassCapacity("Small");
+        wagon.setClassCapacity("Large");*/
         //wagon.setOrderNumber(null);
 
         /*List list = new ArrayList<Driver>();
@@ -72,10 +72,18 @@ public class Main {
         //controlOrder.addLoad(3);
 
         DriverService driverService = new DriverService();
-        driverService.changeStatusOfDriver(3, "On shift");
+        driverService.changeStatusOfDriver(18, "On shift");
 
         //controlWagon.addNewWagon(wagon);
+        System.out.println("OK3-1");
         //controlDrivers.addNewDriver(driver);
+
+
+        //DriverService driverService = new DriverService();
+        //driverService.changeStatusOfDelivery(18);
+
+
+
         //controlOrder.addNewOrder(order);
         //controlWagon.addNewWagon(wagon);
         System.out.println("OK3");

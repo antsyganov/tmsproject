@@ -4,6 +4,7 @@ package ru.tsystems.tsproject.tms.model.employee;
 import ru.tsystems.tsproject.tms.model.dao.AbstractDAO;
 import ru.tsystems.tsproject.tms.model.dao.OrderDAO;
 import ru.tsystems.tsproject.tms.model.entity.Order;
+import ru.tsystems.tsproject.tms.model.entity.Wagon;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -51,7 +52,7 @@ public class ControlOrder {
         //em.getTransaction().commit();
         order.commitTransaction();
     }
-    public void addLoad(long orderNumber){
+    public void addLoad(long orderNumber, String load){
         //получаем заказа с заданым номером orderNumber
         Order order;
         //order.setLoad("Load");
@@ -61,7 +62,7 @@ public class ControlOrder {
         OrderDAO ord = new OrderDAO();
         ord.beginTransaction();
         order = ord.getOrder(orderNumber);
-        order.setLoad("Load");
+        order.setLoad(load);
         order.setStatus("Confirmed");
         ord.update(order);
         //em.getTransaction().commit();
@@ -72,6 +73,13 @@ public class ControlOrder {
         String status = order.getStatus();
         if(!status.equalsIgnoreCase("Confirmed"))
             return;
+        String classCapacity = getClassCapacity(order.getWeight());
+
+        ControlWagon controlWagon = new ControlWagon();
+        Wagon wagon = controlWagon.getGoodWagon(classCapacity);
+        if(wagon == null)
+            //нет подходящей фуры
+            return;
 
 
     }
@@ -80,5 +88,20 @@ public class ControlOrder {
         if(!status.equalsIgnoreCase("Performed"))
             return;
 
+    }
+
+    String getClassCapacity(int weight){
+        String result = null;
+
+        if(weight < 1000)
+            result = "Small";
+        else
+            if(weight < 5000 && weight > 1000)
+                result = "Medium";
+            else
+                if(weight < 10000 && weight > 5000)
+                    result = "Large";
+
+        return result;
     }
 }

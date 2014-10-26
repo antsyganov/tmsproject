@@ -41,4 +41,11 @@ public class WagonDAO extends AbstractDAO<Wagon> {
         return wgn;
     }
 
+    public Object findGoodWagon(String classCapacity){
+        Query query = em.createQuery("SELECT e FROM Wagon e WHERE e.classCapacity <= :classCapacity AND e.order = null");
+        query.setParameter("classCapacity", classCapacity);
+        Object wgn = null;
+        wgn= query.getSingleResult();
+        return wgn;
+    }
 }

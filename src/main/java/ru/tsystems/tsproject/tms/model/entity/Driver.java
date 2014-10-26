@@ -35,8 +35,8 @@ public class Driver extends Entities{
     @JoinColumn(name = "wagon_id")
     private Wagon wagon;*/
 
-    //@ManyToMany(fetch = FetchType.EAGER, mappedBy = "drivers")
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "drivers", cascade = CascadeType.PERSIST)
+    //@ManyToMany
     private List<Wagon> wagon = new ArrayList<Wagon>();
 
     public Driver(){
@@ -87,7 +87,7 @@ public class Driver extends Entities{
         return wagon;
     }
 
-    /*@Override
+    @Override
     public String toString() {
         return "Driver{" +
                 "id=" + id +
@@ -98,5 +98,5 @@ public class Driver extends Entities{
                 ", status='" + status + '\'' +
                 ", wagon=" + wagon +
                 '}';
-    }*/
+    }
 }

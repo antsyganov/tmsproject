@@ -66,4 +66,14 @@ public class ControlWagon {
             return true;
         }
     }
+
+    public Wagon getGoodWagon(String classCapacity){
+        Wagon wagon;
+        WagonDAO wagonDAO = new WagonDAO();
+        wagonDAO.beginTransaction();
+        wagon = (Wagon)wagonDAO.findGoodWagon(classCapacity);
+        wagonDAO.commitTransaction();
+        wagonDAO.close();
+        return wagon;
+    }
 }
