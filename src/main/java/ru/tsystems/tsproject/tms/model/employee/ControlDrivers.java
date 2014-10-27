@@ -73,4 +73,14 @@ public class ControlDrivers {
             return true;
         }
     }
+
+    public Driver getFreeDriver(){
+        Driver driver = null;
+        DriverDAO instance = new DriverDAO();
+        instance.beginTransaction();
+        driver = instance.getFreeDriver();
+        instance.commitTransaction();
+        instance.close();
+        return driver;
+    }
 }

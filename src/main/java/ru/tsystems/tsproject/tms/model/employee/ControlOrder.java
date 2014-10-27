@@ -3,11 +3,13 @@ package ru.tsystems.tsproject.tms.model.employee;
 
 import ru.tsystems.tsproject.tms.model.dao.AbstractDAO;
 import ru.tsystems.tsproject.tms.model.dao.OrderDAO;
+import ru.tsystems.tsproject.tms.model.entity.Driver;
 import ru.tsystems.tsproject.tms.model.entity.Order;
 import ru.tsystems.tsproject.tms.model.entity.Wagon;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -69,7 +71,13 @@ public class ControlOrder {
         ord.commitTransaction();
 
     }
-    void appointWagon(Order order){
+    void appointWagon(long id){
+
+        OrderDAO instance = new OrderDAO();
+        Order order;
+        instance.beginTransaction();
+        order = instance.getOrder(id);
+
         String status = order.getStatus();
         if(!status.equalsIgnoreCase("Confirmed"))
             return;
@@ -81,12 +89,54 @@ public class ControlOrder {
             //нет подходящей фуры
             return;
 
+        order.setWagon(wagon);
+        //назначаем водителей в фуру
+        List<Driver> driverList = new ArrayList<Driver>();
+        ControlDrivers controlDrivers = new ControlDrivers();
+        for(int i=0; i<wagon.getNumberOfDriver(); i++){
+            Driver driver = controlDrivers.getFreeDriver();
+            if (driver == null)
+                return;//нет свободных водителей
+            driverList.add(driver);
+            driver.setStatus("On shift");
+        }
+        order.setStatus("Shipped");
 
+        instance.commitTransaction();
+        instance.close();
     }
-    void changeStatus(Order order){
+    public void changeStatus(long id){
+        OrderDAO instance = new OrderDAO();
+        instance.beginTransaction();
+        Order order;
+        order = instance.getOrder(id);
+
         String status = order.getStatus();
-        if(!status.equalsIgnoreCase("Performed"))
+        if(!status.equalsIgnoreCase("Executed"))
             return;
+
+        Wagon wagon;
+        wagon = order.getWagon();
+
+        List<Driver> driverList = new ArrayList<Driver>();
+        driverList = wagon.getListOfDrivers();
+
+        for(int i=0; i < driverList.size(); i++){
+            if(driverList.get(i).getStatus().equalsIgnoreCase("Driving"))
+                return;//не можем сменить статус. есть водители за рулем
+        }
+        //меняем статус водителей
+        for(int i=0; i < driverList.size(); i++){
+            driverList.get(i).setStatus("Not on shift");
+        }
+        wagon.setListOfDrivers(null);//удаляем список водителей
+
+        order.setWagon(null);
+
+        order.setStatus("Closed");
+
+        instance.commitTransaction();
+        instance.close();
 
     }
 

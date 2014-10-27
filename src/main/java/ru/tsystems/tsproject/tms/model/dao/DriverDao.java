@@ -49,4 +49,14 @@ public class DriverDAO extends AbstractDAO<Driver> {
         driver = (Driver)query.getSingleResult();
         return driver;
     }
+
+    public Driver getFreeDriver(){
+        String status = "Not on shift";
+        Query query = em.createQuery("SELECT e FROM Driver e WHERE e.status = :status");
+        query.setParameter("status", status);
+
+        Driver driver = null;
+        driver = (Driver)query.getSingleResult();
+        return driver;
+    }
 }

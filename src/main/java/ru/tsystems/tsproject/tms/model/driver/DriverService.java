@@ -22,15 +22,15 @@ public class DriverService {
         Driver driver;
         DriverDAO driverDAO = new DriverDAO();
         driverDAO.beginTransaction();
-        System.out.println("1");
+
         driver = driverDAO.getDriver(id);
 
         if(driver == null)
             return "Not exist"; //нет водителя с такими правами
 
-        info = "Your ID" + Long.toString(id) + ";";
+        info = "Your ID: " + Long.toString(id) + ";";
         //Wagon wagon = driver.getWagon();
-        System.out.println("2");
+
         List<Wagon> wagon = new ArrayList<Wagon>();
         wagon = driver.getWagon();
 
